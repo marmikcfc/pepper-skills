@@ -1,5 +1,347 @@
 {
   "version": "1.0",
   "updated_at": "2026-04-19",
-  "skills": []
+  "skills": [
+    {
+      "id": "ab-test-setup",
+      "upstream": "coreyhaines31/marketingskills/skills/ab-test-setup/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/ab-test-setup/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "ad-creative",
+      "upstream": "coreyhaines31/marketingskills/skills/ad-creative/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/ad-creative/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "ai-seo",
+      "upstream": "coreyhaines31/marketingskills/skills/ai-seo/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/ai-seo/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "analytics-tracking",
+      "upstream": "coreyhaines31/marketingskills/skills/analytics-tracking/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/analytics-tracking/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "brand-voice-extractor",
+      "upstream": "gooseworks-ai/goose-skills/skills/capabilities/brand-voice-extractor",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/capabilities/brand-voice-extractor",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "campaign-brief-generator",
+      "upstream": "gooseworks-ai/goose-skills/skills/composites/campaign-brief-generator",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/composites/campaign-brief-generator",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "cold-email",
+      "upstream": "coreyhaines31/marketingskills/skills/cold-email/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/cold-email/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "content-strategy",
+      "upstream": "coreyhaines31/marketingskills/skills/content-strategy/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/content-strategy/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "copy-editing",
+      "upstream": "coreyhaines31/marketingskills/skills/copy-editing/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/copy-editing/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "copywriting",
+      "upstream": "coreyhaines31/marketingskills/skills/copywriting/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/copywriting/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "customer-research",
+      "upstream": "coreyhaines31/marketingskills/skills/customer-research/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/customer-research/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "email-drafting",
+      "upstream": "gooseworks-ai/goose-skills/skills/capabilities/email-drafting",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/capabilities/email-drafting",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "email-sequence",
+      "upstream": "coreyhaines31/marketingskills/skills/email-sequence/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/email-sequence/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "feature-launch-playbook",
+      "upstream": "gooseworks-ai/goose-skills/skills/composites/feature-launch-playbook",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/composites/feature-launch-playbook",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "inbound-lead-triage",
+      "upstream": "gooseworks-ai/goose-skills/skills/composites/inbound-lead-triage",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/composites/inbound-lead-triage",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "launch-strategy",
+      "upstream": "coreyhaines31/marketingskills/skills/launch-strategy/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/launch-strategy/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "lead-magnets",
+      "upstream": "coreyhaines31/marketingskills/skills/lead-magnets/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/lead-magnets/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "lead-qualification",
+      "upstream": "gooseworks-ai/goose-skills/skills/composites/lead-qualification",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/composites/lead-qualification",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "marketing-ideas",
+      "upstream": "coreyhaines31/marketingskills/skills/marketing-ideas/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/marketing-ideas/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "marketing-psychology",
+      "upstream": "coreyhaines31/marketingskills/skills/marketing-psychology/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/marketing-psychology/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "messaging-ab-tester",
+      "upstream": "gooseworks-ai/goose-skills/skills/composites/messaging-ab-tester",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/composites/messaging-ab-tester",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "page-cro",
+      "upstream": "coreyhaines31/marketingskills/skills/page-cro/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/page-cro/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "paid-ads",
+      "upstream": "coreyhaines31/marketingskills/skills/paid-ads/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/paid-ads/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "paid-channel-prioritizer",
+      "upstream": "gooseworks-ai/goose-skills/skills/composites/paid-channel-prioritizer",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/composites/paid-channel-prioritizer",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "pricing-strategy",
+      "upstream": "coreyhaines31/marketingskills/skills/pricing-strategy/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/pricing-strategy/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "programmatic-seo",
+      "upstream": "coreyhaines31/marketingskills/skills/programmatic-seo/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/programmatic-seo/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "sales-enablement",
+      "upstream": "coreyhaines31/marketingskills/skills/sales-enablement/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/sales-enablement/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "schema-markup",
+      "upstream": "coreyhaines31/marketingskills/skills/schema-markup/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/schema-markup/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "seo-audit",
+      "upstream": "coreyhaines31/marketingskills/skills/seo-audit/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/seo-audit/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "social-content",
+      "upstream": "coreyhaines31/marketingskills/skills/social-content/SKILL.md",
+      "upstream_url": "https://github.com/coreyhaines31/marketingskills/blob/main/skills/social-content/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "visual-brand-extractor",
+      "upstream": "gooseworks-ai/goose-skills/skills/capabilities/visual-brand-extractor",
+      "upstream_url": "https://github.com/gooseworks-ai/goose-skills/tree/main/skills/capabilities/visual-brand-extractor",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-19",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    }
+  ]
 }
