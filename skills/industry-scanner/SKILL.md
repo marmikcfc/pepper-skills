@@ -22,7 +22,7 @@ Monitor an industry or topic for trends, news, emerging companies, and conversat
 **Step 1: Web search for recent news**
 ```bash
 orth run search /search \
-  --body '{"query": "<industry> news trends 2025", "limit": 20}'
+  --body '{"query": "<industry> news trends <current_year>", "limit": 20}'
 ```
 
 **Step 2: Deep research with Perplexity**
@@ -34,7 +34,7 @@ orth run perplexity /chat \
 **Step 3: Exa semantic search**
 ```bash
 orth run exa /search \
-  --body '{"query": "<industry> emerging trends 2025", "numResults": 10, "useAutoprompt": true}'
+  --body '{"query": "<industry> emerging trends <current_year>", "numResults": 10, "useAutoprompt": true}'
 ```
 
 **Step 4: Social signal scan**
