@@ -87,7 +87,14 @@ Output structured lead profile:
 - **Stakeholders:** Other buying committee members found
 - **ICP fit:** Score and tier, fit reasons, red flags, recommended next action
 
-**Step 8: Save to cache (after presenting, ask for confirmation)**
+**Step 8: Save to cache**
+
+Present the enriched contact summary to the user, then ask:
+
+> "Should I save <name> (<email>, <company>) to the contact cache? (yes/no)"
+
+Only proceed if the user confirms.
+
 ```bash
 state_append "contacts/cache.md" "$(date -u +%Y-%m-%dT%H:%M:%SZ) | <email> | <name> | <company> | <title> | <linkedin_url>"
 ```
