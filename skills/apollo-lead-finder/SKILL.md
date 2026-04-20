@@ -88,8 +88,12 @@ orth run fiber /v1/natural-language-search/profiles \
 Check existing contacts cache to avoid re-processing known leads:
 ```bash
 CACHED=$(state_read "contacts/cache.md")
-# Filter out any leads whose email already appears in the cache
+# For each lead, check if their email is already in the cache
+# If email found in cache, skip that lead
+echo "$CACHED" | grep "<lead_email>" && echo "Already cached, skipping" || echo "New lead, proceed"
 ```
+
+Only pass leads through to Step 5 if their email does NOT appear in `$CACHED`.
 
 **Step 5: Present enriched results**
 
