@@ -20,8 +20,8 @@ Scrape attendees from a Luma event page and enrich ICP-matching attendees with c
 
 **Step 1: Scrape Luma attendee list**
 ```bash
-orth run scrape "<luma_event_url>" \
-  --body '{"format": "text"}'
+orth run scrape /scrape \
+  --body '{"url": "<luma_event_url>", "format": "text"}'
 ```
 Extract names, companies, and titles from the public attendee list. Note: Luma shows attendees publicly only when the event organizer enables it.
 

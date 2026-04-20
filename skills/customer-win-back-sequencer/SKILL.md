@@ -24,11 +24,15 @@ Run a 3-email win-back sequence targeting churned customers in the optimal re-en
 **Step 1: Load churned customer list**
 ```bash
 state_read() { curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "$1")" -H "Authorization: Bearer $PEPPER_API_KEY" | python3 -c "import json,sys; print(json.load(sys.stdin).get('content',''))"; }
+state_write() { local path="$1"; local content="$2"; curl -sf -X PUT "$PEPPER_CLOUD_URL/api/state" -H "Authorization: Bearer $PEPPER_API_KEY" -H "Content-Type: application/json" -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"; }
 state_append() { local path="$1"; local content="$2"; curl -sf -X POST "$PEPPER_CLOUD_URL/api/state/append" -H "Authorization: Bearer $PEPPER_API_KEY" -H "Content-Type: application/json" -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"; }
 
 CHURNED=$(state_read "revops/churned.md")
 ```
-Filter for customers who churned 90-180 days ago. Earlier than 90 days = too soon. Later than 180 days = likely stale.
+Expected format per line: `email | company | churn_date (YYYY-MM-DD) | plan`. Pass the list to Claude:
+> "Today is $(date +%Y-%m-%d). From this churned customer list, extract only customers whose churn_date is between 90 and 180 days ago. Return each as: email | company | churn_date | days_since_churn. Skip anyone outside that window."
+
+Earlier than 90 days = too soon. Later than 180 days = likely stale.
 
 **Step 2: Design 3-email win-back sequence**
 Draft all 3 emails for each customer using Claude:
