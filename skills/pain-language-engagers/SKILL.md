@@ -1,6 +1,6 @@
 ---
 name: pain-language-engagers
-description: Find people publicly expressing pain points your product solves — on LinkedIn, Reddit, and Twitter. Use when asked to find warm leads, find people complaining about [problem], or find prospects expressing intent.
+description: Find people publicly expressing pain points your product solves — on LinkedIn and Reddit. Use when asked to find warm leads, find people complaining about [problem], or find prospects expressing intent.
 ---
 
 # Pain Language Engagers

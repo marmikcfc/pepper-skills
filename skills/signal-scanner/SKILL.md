@@ -24,8 +24,7 @@ Detect buying signals across your TAM: funding rounds, new hires, competitor eng
 | Funding round | funding-radar | P0 |
 | Hiring surge (relevant roles) | hiring-signals | P0 |
 | New product launches | startup-launches | P1 |
-| GitHub activity | github | P1 |
-| Competitor post engagement | linkedin-post-comments | P2 |
+| Competitor post engagement | `competitor-post-engagers` skill | P2 (use dedicated skill) |
 
 ## Workflow
 
