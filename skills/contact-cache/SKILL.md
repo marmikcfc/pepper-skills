@@ -44,13 +44,31 @@ echo "$CACHED" | grep "<linkedin_url>"
 If the grep returns a result, the contact is already cached — skip enrichment and use cached data.
 
 ### Add single contact to cache (after enrichment)
+
+Before writing, present the contact details to the user and ask for confirmation:
+
+> "I'm about to add this contact to the cache:
+> - Name: <name> | Company: <company> | Title: <title> | Email: <email>
+> Should I add this to the contact cache? (yes/no)"
+
+Only proceed if the user confirms.
+
 ```bash
 state_append "contacts/cache.md" "$(date -u +%Y-%m-%dT%H:%M:%SZ) | <email> | <name> | <company> | <title> | <linkedin_url> | <status>"
 ```
 
 ### Bulk add contacts from a list
 
-For each contact in the list:
+Before writing, present the full list to the user and ask for confirmation:
+
+> "I'm about to add N contacts to the cache. Here's the list:
+> 1. <name> | <company> | <email>
+> 2. ...
+> Should I add these to the contact cache? (yes / edit list / cancel)"
+
+Only proceed if the user confirms. If they say "edit list," work with them to refine before writing.
+
+For each confirmed contact in the list:
 ```bash
 state_append "contacts/cache.md" "$(date -u +%Y-%m-%dT%H:%M:%SZ) | <email> | <name> | <company> | <title> | <linkedin_url> | new"
 ```

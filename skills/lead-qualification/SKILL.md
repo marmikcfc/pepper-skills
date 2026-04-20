@@ -159,10 +159,3 @@ When user provides feedback on qualification results:
 
 Qualification scorecard per prospect with score (0-100), tier (A/B/C/D), fit summary, and suggested approach (pursue/nurture/skip). Saved to `state_append("contacts/qualified-leads.md", ...)`.
 
-## Description
-
-Skill for: lead qualification
-
-## Instructions
-
-[Add skill instructions here]

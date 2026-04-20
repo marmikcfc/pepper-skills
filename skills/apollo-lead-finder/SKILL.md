@@ -1,5 +1,5 @@
 ---
-name: apollo-lead-finder
+name: lead-finder
 description: Find leads matching a specific role, industry, or company profile. Returns enriched contacts with emails and LinkedIn URLs. Use when asked to find leads, build a prospect list, or find people matching a title/company criteria.
 ---
 
