@@ -13,7 +13,7 @@ Use this as the single entry point for recurring SEO content production. Do not 
 
 ## Prerequisites
 
-- `PEPPER_CLOUD_URL` and `PEPPER_API_KEY` env vars must be set
+- `PEPPER_CLOUD_URL` and `PEPPER_EVENT_SECRET` env vars must be set
 - `seo-opportunity-finder` skill must be installed
 - `topical-authority-mapper` skill must be installed
 - `content-brief-factory` skill must be installed
@@ -30,14 +30,14 @@ Define all three state helpers up front, then read existing state:
 ```bash
 state_read() {
   curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "$1")" \
-    -H "Authorization: Bearer $PEPPER_API_KEY" \
+    -H "Authorization: Bearer $PEPPER_EVENT_SECRET" \
     | python3 -c "import json,sys; print(json.load(sys.stdin).get('content',''))"
 }
 
 state_write() {
   local path="$1"; local content="$2"
   curl -sf -X PUT "$PEPPER_CLOUD_URL/api/state" \
-    -H "Authorization: Bearer $PEPPER_API_KEY" \
+    -H "Authorization: Bearer $PEPPER_EVENT_SECRET" \
     -H "Content-Type: application/json" \
     -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"
 }
@@ -45,7 +45,7 @@ state_write() {
 state_append() {
   local path="$1"; local content="$2"
   curl -sf -X POST "$PEPPER_CLOUD_URL/api/state/append" \
-    -H "Authorization: Bearer $PEPPER_API_KEY" \
+    -H "Authorization: Bearer $PEPPER_EVENT_SECRET" \
     -H "Content-Type: application/json" \
     -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"
 }

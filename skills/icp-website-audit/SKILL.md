@@ -16,13 +16,13 @@ Audit a website's messaging to evaluate how well it speaks to your target ICP. S
 ## Prerequisites
 - `ORTHOGONAL_API_KEY`
 - `ANTHROPIC_API_KEY`
-- `PEPPER_API_KEY` + `PEPPER_CLOUD_URL` (for ICP context)
+- `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL` (for ICP context)
 
 ## Workflow
 
 **Step 1: Load ICP context**
 ```bash
-state_read() { curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "$1")" -H "Authorization: Bearer $PEPPER_API_KEY" | python3 -c "import json,sys; print(json.load(sys.stdin).get('content',''))"; }
+state_read() { curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "$1")" -H "Authorization: Bearer $PEPPER_EVENT_SECRET" | python3 -c "import json,sys; print(json.load(sys.stdin).get('content',''))"; }
 ICP=$(state_read "strategy/icp.md")
 ```
 If empty, ask user to describe their ICP before proceeding.

@@ -14,7 +14,7 @@ Identify customers showing churn signals before they cancel — score risk and g
 - "Who should we prioritize for proactive outreach?"
 
 ## Prerequisites
-- `PEPPER_API_KEY` + `PEPPER_CLOUD_URL`
+- `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
 - `ANTHROPIC_API_KEY`
 
 ## Churn Signals
@@ -33,8 +33,8 @@ Identify customers showing churn signals before they cancel — score risk and g
 
 **Step 1: Load customer data**
 ```bash
-state_read() { curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "$1")" -H "Authorization: Bearer $PEPPER_API_KEY" | python3 -c "import json,sys; print(json.load(sys.stdin).get('content',''))"; }
-state_write() { local path="$1"; local content="$2"; curl -sf -X PUT "$PEPPER_CLOUD_URL/api/state" -H "Authorization: Bearer $PEPPER_API_KEY" -H "Content-Type: application/json" -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"; }
+state_read() { curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "$1")" -H "Authorization: Bearer $PEPPER_EVENT_SECRET" | python3 -c "import json,sys; print(json.load(sys.stdin).get('content',''))"; }
+state_write() { local path="$1"; local content="$2"; curl -sf -X PUT "$PEPPER_CLOUD_URL/api/state" -H "Authorization: Bearer $PEPPER_EVENT_SECRET" -H "Content-Type: application/json" -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"; }
 
 CUSTOMERS=$(state_read "revops/customers.md")
 CHAMPION_MOVES=$(state_read "signals/champion-moves.md")
