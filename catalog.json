@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-04-19",
+  "updated_at": "2026-04-20",
   "skills": [
     {
       "id": "ab-test-setup",
@@ -341,6 +341,171 @@
       "modified": false,
       "changes": null,
       "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "pepper-state",
+      "upstream": "marmikcfc/pepper-skills/skills/pepper-state/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/pepper-state/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": true,
+      "changes": "Phase 4B: foundational state utility — state_read/write/append/list helpers, full GTM state tree reference, context hydration pattern",
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "positioning-canvas",
+      "upstream": "marmikcfc/pepper-skills/skills/positioning-canvas/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/positioning-canvas/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "strategy-canvas",
+      "upstream": "marmikcfc/pepper-skills/skills/strategy-canvas/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/strategy-canvas/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "bet-ledger",
+      "upstream": "marmikcfc/pepper-skills/skills/bet-ledger/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/bet-ledger/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "bet-rank",
+      "upstream": "marmikcfc/pepper-skills/skills/bet-rank/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/bet-rank/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "experiment-design",
+      "upstream": "marmikcfc/pepper-skills/skills/experiment-design/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/experiment-design/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "metric-watcher",
+      "upstream": "marmikcfc/pepper-skills/skills/metric-watcher/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/metric-watcher/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "strategy-review",
+      "upstream": "marmikcfc/pepper-skills/skills/strategy-review/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/strategy-review/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "gtm-state-diff",
+      "upstream": "marmikcfc/pepper-skills/skills/gtm-state-diff/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/gtm-state-diff/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "community-digest",
+      "upstream": "marmikcfc/pepper-skills/skills/community-digest/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/community-digest/SKILL.md",
+      "tier": "orth-dependent",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["hacker-news-algolia-api", "reddit", "pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "founder-voice-amplifier",
+      "upstream": "marmikcfc/pepper-skills/skills/founder-voice-amplifier/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/founder-voice-amplifier/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "dev-tool-community-distribution",
+      "upstream": "marmikcfc/pepper-skills/skills/dev-tool-community-distribution/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/dev-tool-community-distribution/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": [],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "reply-classifier",
+      "upstream": "marmikcfc/pepper-skills/skills/reply-classifier/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/reply-classifier/SKILL.md",
+      "tier": "orth-dependent",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["gmail", "pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "linkedin-manual-queue",
+      "upstream": "marmikcfc/pepper-skills/skills/linkedin-manual-queue/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/linkedin-manual-queue/SKILL.md",
+      "tier": "orth-dependent",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["sales-prospecting", "pepper-cloud-state-api"],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "decision-journal",
+      "upstream": "marmikcfc/pepper-skills/skills/decision-journal/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/decision-journal/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-04-20",
+      "modified": false,
+      "changes": null,
+      "data_sources": ["pepper-cloud-state-api"],
       "cost_estimate_usd": null
     }
   ]
