@@ -1,9 +1,8 @@
 # pepper-skills
 
-Pepper's official skills catalog — the backend for `agentskills.io`.
+Pepper's official skills catalog
 
 Skills hosted here are available to any Pepper agent via:
-`https://agentskills.io/<skill-name>`
 
 ## Structure
 
