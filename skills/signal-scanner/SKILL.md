@@ -66,7 +66,7 @@ SEEN=$(state_read "signals/seen.md")
 ```
 
 **Step 6: Score signals**
-Score each signal 1-10: funding=10, hiring surge=8, launch=6, GitHub activity=4, competitor engagement=3. Multiply by company tier weight (Tier 1=1.0, Tier 2=0.8, Tier 3=0.5).
+Score each signal 1-10: funding=10, hiring surge=8, launch=6, competitor engagement=3. Multiply by company tier weight (Tier 1=1.0, Tier 2=0.8, Tier 3=0.5).
 
 **Step 7: Present and get approval**
 Show: total signals found by type, top 10 ranked by score.
