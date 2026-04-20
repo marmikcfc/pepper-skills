@@ -218,7 +218,7 @@ If no changes were detected across all competitors, skip the email entirely — 
 
 | Path | Operation | Gate Required |
 |------|-----------|---------------|
-| `competitors/watchlist.md` | read + write (timestamp update only) | No |
+| `competitors/watchlist.md` | read + write (timestamp update) | Yes — confirm timestamp update |
 | `competitors/changes.md` | append | No |
 | `competitors/<name>/profile.md` | read + write | Yes — show diff |
 | `competitors/<name>/battlecard.md` | read + write | Yes — show diff |
