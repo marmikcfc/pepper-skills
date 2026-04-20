@@ -32,13 +32,18 @@ orth run scrape "https://adstransparency.google.com/?region=anywhere&q=<competit
   --body '{"format": "text"}'
 ```
 
-**Step 3: Enrich with company context**
+**Step 3: Validate scrape results**
+Meta Ads Library and Google Ads Transparency are JavaScript-rendered pages. Check that each scrape returned at least 500 characters of actual ad content. If a scrape returned minimal content:
+
+> "The [Meta / Google] ad library scrape returned minimal content — the page may require JavaScript or a logged-in session. I'll proceed with whatever was captured, but the teardown may be incomplete."
+
+**Step 4: Enrich with company context**
 ```bash
 orth run competitor-research /research \
   --body '{"competitor": "<competitor_name>"}'
 ```
 
-**Step 4: LLM deep analysis**
+**Step 5: LLM deep analysis**
 Pass all ad data + competitor research to Claude:
 > "Perform a deep teardown of [competitor]'s paid advertising strategy:
 > 1. Creative themes and clusters (group their ads into 3-5 distinct creative themes)
@@ -51,7 +56,7 @@ Pass all ad data + competitor research to Claude:
 > 8. Strategic insights: what does their ad spend reveal about their GTM priorities and where they feel competitive pressure?
 > 9. Gaps and opportunities for us: where are they NOT competing that we could win?"
 
-**Step 5: Present teardown**
+**Step 6: Present teardown**
 Display full teardown report.
 
 ## Output

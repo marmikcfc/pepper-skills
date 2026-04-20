@@ -31,7 +31,12 @@ orth run scrape "https://adstransparency.google.com/?region=anywhere&q=<competit
   --body '{"format": "text"}'
 ```
 
-**Step 3: Extract ad patterns with LLM**
+**Step 3: Validate scrape results**
+Meta Ads Library and Google Ads Transparency are JavaScript-rendered pages. Before proceeding, check that the scraped content contains actual ad text (minimum 500 characters with recognizable ad language — headlines, "Learn More", button text, etc.). If either scrape returned less than 500 characters or only boilerplate HTML, warn the user:
+
+> "The [Meta / Google] ad library scrape returned minimal content — the page may require JavaScript or a logged-in session. I'll proceed with whatever was captured, but results may be limited."
+
+**Step 4: Extract ad patterns with LLM**
 Pass all scraped ad text to Claude:
 > "Analyze these ads and extract:
 > 1. Top 5 headline hooks (how they grab attention)
