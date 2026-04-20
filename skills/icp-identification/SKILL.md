@@ -14,7 +14,7 @@ Research and document your Ideal Customer Profile: target industries, company si
 - "Identify our ideal customers"
 
 ## Prerequisites
-- `ORTHOGONAL_API_KEY`
+- `ORTHOGONAL_API_KEY` — for `orth run exa`, `orth run perplexity`, `orth run company-intel`
 - `ANTHROPIC_API_KEY`
 - `PEPPER_API_KEY` + `PEPPER_CLOUD_URL`
 
