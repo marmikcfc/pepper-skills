@@ -17,7 +17,7 @@ Run a 3-email win-back sequence targeting churned customers in the optimal re-en
 - `ORTHOGONAL_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
 - `ANTHROPIC_API_KEY`
-- Gmail connected via orth
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -54,8 +54,14 @@ Only proceed if user confirms.
 
 **Step 4: Send Email 1 and log**
 ```bash
-orth run gmail /send \
-  --body '{"to": "<email>", "subject": "<email_1_subject>", "body": "<email_1_body>"}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the send email action slug
+composio-tool search "send email" --toolkit gmail --limit 3
+
+# Send Email 1
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<email>", "subject": "<email_1_subject>", "body": "<email_1_body>"}'
 
 state_append "revops/win-back.md" "<customer_email> | <company> | $(date +%Y-%m-%d) | email_1_sent"
 ```
