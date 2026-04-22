@@ -17,6 +17,7 @@ Synthesize customer feedback from multiple sources into messaging frameworks you
 - `ORTHOGONAL_API_KEY`
 - `ANTHROPIC_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL` (to read cached reviews and interview notes)
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -31,8 +32,14 @@ INTERVIEWS=$(state_read "intelligence/interviews.md")
 
 **Step 2: Pull support emails**
 ```bash
-orth run gmail /search \
-  --body '{"query": "from:customers subject:feedback OR subject:love OR subject:problem OR subject:question", "limit": 50}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the list emails action slug
+composio-tool search "search emails" --toolkit gmail --limit 3
+
+# Fetch relevant support emails
+composio-tool execute GMAIL_LIST_EMAILS '{"query": "from:customers subject:feedback OR subject:love OR subject:problem OR subject:question", "max_results": 50}'
 ```
 
 **Step 3: LLM synthesis**
