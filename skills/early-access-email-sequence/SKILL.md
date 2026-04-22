@@ -17,7 +17,7 @@ Design and send a multi-touch email sequence for early access programs, beta lau
 - `ORTHOGONAL_API_KEY`
 - `ANTHROPIC_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
-- Gmail connected via orth
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -51,8 +51,14 @@ state_read() { curl -sf "$PEPPER_CLOUD_URL/api/state?path=$(python3 -c 'import u
 state_write() { local path="$1"; local content="$2"; curl -sf -X PUT "$PEPPER_CLOUD_URL/api/state" -H "Authorization: Bearer $PEPPER_EVENT_SECRET" -H "Content-Type: application/json" -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"; }
 state_append() { local path="$1"; local content="$2"; curl -sf -X POST "$PEPPER_CLOUD_URL/api/state/append" -H "Authorization: Bearer $PEPPER_EVENT_SECRET" -H "Content-Type: application/json" -d "$(python3 -c "import json,sys; print(json.dumps({'path':sys.argv[1],'content':sys.argv[2]}))" "$path" "$content")"; }
 
-orth run gmail /send \
-  --body '{"to": "<recipient>", "subject": "<email_1_subject>", "body": "<email_1_body>"}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the send email action slug
+composio-tool search "send email" --toolkit gmail --limit 3
+
+# Send Email 1
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<recipient>", "subject": "<email_1_subject>", "body": "<email_1_body>"}'
 
 state_append "revops/sequences.md" "<recipient> | early-access | $(date +%Y-%m-%d) | email_1_sent"
 ```
