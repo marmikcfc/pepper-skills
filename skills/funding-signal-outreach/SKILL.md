@@ -17,7 +17,7 @@ Reach out to companies that just raised funding with timing-aware, congratulator
 - `ORTHOGONAL_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
 - `ANTHROPIC_API_KEY`
-- Gmail connected via orth
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -55,8 +55,14 @@ Only proceed if user confirms.
 
 **Step 6: Send and log**
 ```bash
-orth run gmail /send \
-  --body '{"to": "<email>", "subject": "Congrats on the raise", "body": "<approved_email>"}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the send email action slug
+composio-tool search "send email" --toolkit gmail --limit 3
+
+# Send the email
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<email>", "subject": "Congrats on the raise", "body": "<approved_email>"}'
 
 state_append "revops/outreach.md" "$(date -u +%Y-%m-%dT%H:%M:%SZ) | SENT | <email> | <company> | funding-trigger"
 ```
