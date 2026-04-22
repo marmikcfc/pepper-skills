@@ -11,7 +11,14 @@ Scrape all comments from a LinkedIn post, populate a Google Sheet, and enrich co
 ## Requirements
 
 - `orth` CLI installed and authenticated (`npm install -g @orth/cli`)
-- Google Sheets connected at https://orthogonal.com/dashboard/integrations
+- Google Sheets connected via Composio — connect at Settings → Integrations in Pepper Cloud dashboard (via Composio)
+
+## Credentials Check
+
+```bash
+# Verify Google Sheets is connected before proceeding
+composio-tool apps | grep -i googlesheets || echo "Google Sheets not connected — user must connect at Settings → Integrations"
+```
 
 ## APIs Used
 
@@ -20,7 +27,7 @@ Scrape all comments from a LinkedIn post, populate a Google Sheet, and enrich co
 | Fiber | `/v1/linkedin-live-fetch/post-comments` | 2 credits/page (10 comments) | Fetch comments |
 | Tomba | `/v1/linkedin` | 1 credit/lookup | Email finder (cheap, try first) |
 | Sixtyfour | `/find-email` | 5 cents/lookup | Email finder (fallback) |
-| Google Sheets | `/create-spreadsheet`, `/update-values` | free | Sheet creation and population |
+| Google Sheets (via Composio) | `GOOGLESHEETS_CREATE_GOOGLE_SHEET`, `GOOGLESHEETS_BATCH_UPDATE_VALUES` | free | Sheet creation and population |
 
 ## Step 1: Extract the Content ID
 
@@ -34,7 +41,11 @@ The content ID is: `urn:li:activity:7434655206426042368`
 ## Step 2: Create the Google Sheet
 
 ```bash
-orth run google-sheets /create-spreadsheet -b '{"title": "LinkedIn Post Comments - <description>"}'
+# Search first to find exact slug
+composio-tool search "create spreadsheet" --toolkit googlesheets --limit 3
+
+# Create the spreadsheet
+composio-tool execute GOOGLESHEETS_CREATE_GOOGLE_SHEET '{"title": "LinkedIn Post Comments - <description>"}'
 ```
 
 Save the `spreadsheet_id` from the response.
@@ -42,11 +53,13 @@ Save the `spreadsheet_id` from the response.
 ## Step 3: Add Headers
 
 ```bash
-orth run google-sheets /update-values -b '{
+# Search first to find exact slug
+composio-tool search "update values" --toolkit googlesheets --limit 3
+
+# Write headers
+composio-tool execute GOOGLESHEETS_BATCH_UPDATE_VALUES '{
   "spreadsheet_id": "<SPREADSHEET_ID>",
-  "sheet_name": "Sheet1",
-  "first_cell_location": "A1",
-  "values": [["Name", "Comment", "LinkedIn URL", "LinkedIn Slug", "Reactions", "Date", "Email"]]
+  "data": [{"range": "Sheet1!A1", "values": [["Name", "Comment", "LinkedIn URL", "LinkedIn Slug", "Reactions", "Date", "Email"]]}]
 }'
 ```
 
@@ -108,15 +121,14 @@ while True:
             c.get("createdAt", "")
         ])
 
+    # Write batch to sheet via composio-tool
     sheet_body = json.dumps({
         "spreadsheet_id": SHEET_ID,
-        "sheet_name": "Sheet1",
-        "first_cell_location": f"A{row}",
-        "values": values
+        "data": [{"range": f"Sheet1!A{row}", "values": values}]
     })
 
     subprocess.run(
-        ["orth", "run", "google-sheets", "/update-values", "-b", sheet_body],
+        ["composio-tool", "execute", "GOOGLESHEETS_BATCH_UPDATE_VALUES", sheet_body],
         capture_output=True, text=True
     )
     print(f"  Written to sheet rows {row}-{row + len(values) - 1}")
@@ -144,9 +156,9 @@ import subprocess, json, re
 SHEET_ID = "<SPREADSHEET_ID>"
 ENRICH_COUNT = 10  # number of rows to enrich, or "all"
 
-# 1. Read LinkedIn slugs from the sheet
+# 1. Read LinkedIn slugs from the sheet via composio-tool
 result = subprocess.run(
-    ["orth", "run", "google-sheets", "/get-values", "-b",
+    ["composio-tool", "execute", "GOOGLESHEETS_GET_VALUES_OF_A_SPREADSHEET",
      json.dumps({"spreadsheet_id": SHEET_ID, "ranges": [f"Sheet1!C2:D{ENRICH_COUNT + 1}"]})],
     capture_output=True, text=True
 )
@@ -204,15 +216,13 @@ for i, row in enumerate(rows):
     print(f"  Not found")
     emails.append(["Not found"])
 
-# 2. Write emails to column G
+# 2. Write emails to column G via composio-tool
 sheet_body = json.dumps({
     "spreadsheet_id": SHEET_ID,
-    "sheet_name": "Sheet1",
-    "first_cell_location": "G2",
-    "values": emails
+    "data": [{"range": "Sheet1!G2", "values": emails}]
 })
 subprocess.run(
-    ["orth", "run", "google-sheets", "/update-values", "-b", sheet_body],
+    ["composio-tool", "execute", "GOOGLESHEETS_BATCH_UPDATE_VALUES", sheet_body],
     capture_output=True, text=True
 )
 print(f"\nDone! Enriched {len(emails)} rows.")
@@ -224,4 +234,5 @@ PYEOF
 - Most viral LinkedIn posts have hundreds of low-effort "keyword" comments (e.g. "Code", "interested"). Filter these in the sheet if you only want substantive commenters.
 - Sixtyfour returns a confidence level: `OK`, `RISKY`, or `UNKNOWN`. Prioritize `OK` emails for outreach.
 - To enrich only commenters with substantive comments, filter column B in the sheet first before running the enrichment script.
-- The Google Sheets integration requires OAuth — connect at https://orthogonal.com/dashboard/integrations
+- Always run `composio-tool search` before `composio-tool execute` to confirm the exact action slug — slugs may differ from the examples above.
+- Google Sheets integration requires OAuth — connect at Settings → Integrations in Pepper Cloud dashboard (via Composio)
