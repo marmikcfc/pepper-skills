@@ -19,7 +19,7 @@ Fetch unread Gmail replies from outreach sequences, classify each one using an L
 - `ANTHROPIC_API_KEY` — used to classify each reply
 - `PEPPER_EVENT_SECRET` — auth token for the state API
 - `PEPPER_CLOUD_URL` — base URL of your Pepper Cloud instance
-- Gmail connected via `orth` (`orth login gmail`)
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -32,8 +32,14 @@ state_append() { local path="$1"; local content="$2"; curl -sf -X POST "$PEPPER_
 **Step 1: Read recent replies**
 
 ```bash
-orth run gmail /inbox \
-  --body '{"query": "in:inbox is:unread", "limit": 20}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the list emails action slug
+composio-tool search "list emails" --toolkit gmail --limit 3
+
+# Fetch unread inbox messages
+composio-tool execute GMAIL_LIST_EMAILS '{"query": "in:inbox is:unread", "max_results": 20}'
 ```
 
 If no unread emails are returned, inform the user: "No unread replies found. Your inbox is clear."
@@ -77,6 +83,13 @@ If yes, draft a reply:
 > "Write a concise, friendly reply to this email that proposes a 20-minute call. Include a Calendly placeholder [CALENDLY_LINK]. Match the tone of the original reply. Keep it under 80 words."
 
 Show the draft and ask: "Send this reply? (yes/no) — Only proceed if user confirms."
+
+If confirmed, send via composio-tool:
+
+```bash
+composio-tool search "send email" --toolkit gmail --limit 3
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<sender_email>", "subject": "Re: <original_subject>", "body": "<reply_body>"}'
+```
 
 **Step 5: Log unsubscribes to state**
 
