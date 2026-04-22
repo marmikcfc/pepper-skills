@@ -21,14 +21,12 @@ Build a structured map of your competitive landscape — who the players are, ho
 
 **Step 1: Identify competitors**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "Who are the main competitors in [market/category]? Include direct, adjacent, and DIY alternatives. What are their positioning claims and pricing?"}'
+perplexity "Who are the main competitors in [market/category]? Include direct, adjacent, and DIY alternatives. What are their positioning claims and pricing?"
 ```
 
 **Step 2: Pull positioning data per competitor**
 ```bash
-orth run exa /search \
-  --body '{"query": "[competitor] positioning value proposition pricing target customer", "numResults": 5}'
+exa-search "[competitor] positioning value proposition pricing target customer" --limit 5
 ```
 
 **Step 3: Categorize competitor types**

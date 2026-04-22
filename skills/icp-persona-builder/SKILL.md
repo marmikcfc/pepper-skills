@@ -27,14 +27,12 @@ orth run reddit-wizard /search \
 
 **Step 2: Perplexity — structured pain point research**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What are the biggest challenges and frustrations for <job_title> at <company_type> companies in <current_year>? What keeps them up at night? What are their KPIs and success metrics?"}'
+perplexity "What are the biggest challenges and frustrations for <job_title> at <company_type> companies in <current_year>? What keeps them up at night? What are their KPIs and success metrics?"
 ```
 
 **Step 3: Exa — day-in-the-life content**
 ```bash
-orth run exa /search \
-  --body '{"query": "<job_title> day in the life pain points goals challenges", "numResults": 10}'
+exa-search "<job_title> day in the life pain points goals challenges" --limit 10
 ```
 
 **Step 4: LLM persona synthesis — Jobs-to-be-Done format**

@@ -48,8 +48,7 @@ Flag: high impressions + low CTR → fix title/meta. Good rank + low impressions
 
 **Step 4: Competitor snapshot**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What new content has [competitor] published in the past 30 days targeting [your keywords]?"}'
+perplexity "What new content has [competitor] published in the past 30 days targeting [your keywords]?"
 ```
 
 **Step 5: Technical health check**

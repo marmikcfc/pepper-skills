@@ -22,11 +22,7 @@ Track brand mentions, competitor activity, and industry conversations across soc
 Find recent mentions, reviews, and discussions across the web:
 
 ```bash
-orth run exa /search -d '{
-  "query": "Notion reviews opinions user feedback",
-  "numResults": 30,
-  "contents": {"text": true}
-}'
+exa-search "Notion reviews opinions user feedback" --limit 30
 ```
 
 ### Step 2: Monitor Social Media with Scrape Creators
@@ -61,7 +57,7 @@ orth run scrapegraph /v1/smartscraper -d '{
 **User:** "What are people saying about Slack?"
 ```bash
 # Step 1: Web mentions
-orth run exa /search -d '{"query": "Slack reviews complaints praise 2025 2026", "numResults": 20, "contents": {"text": true}}'
+exa-search "Slack reviews complaints praise 2025 2026" --limit 20
 
 # Step 2: Their social presence
 orth run scrapecreators /v1/twitter/user-tweets -q 'handle=SlackHQ'
@@ -69,7 +65,7 @@ orth run scrapecreators /v1/twitter/user-tweets -q 'handle=SlackHQ'
 
 **User:** "Monitor competitor launches in the AI space"
 ```bash
-orth run exa /search -d '{"query": "AI startup launch announcement new product 2026", "numResults": 30, "contents": {"text": true}}'
+exa-search "AI startup launch announcement new product 2026" --limit 30
 ```
 
 ## Tips

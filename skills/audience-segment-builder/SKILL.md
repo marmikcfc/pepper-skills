@@ -21,8 +21,7 @@ Build distinct, actionable audience segments from CRM data and behavioral signal
 
 **Step 1: Pull customer data signals**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What are the most valuable ways to segment B2B SaaS customers for marketing? Include firmographic, behavioral, and intent-based dimensions."}'
+perplexity "What are the most valuable ways to segment B2B SaaS customers for marketing? Include firmographic, behavioral, and intent-based dimensions."
 ```
 
 **Step 2: Identify segment dimensions**

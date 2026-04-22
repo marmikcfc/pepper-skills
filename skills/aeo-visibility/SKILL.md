@@ -58,8 +58,7 @@ for query in test_queries:
 
 **Step 4: Query Perplexity**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "<test_query>"}'
+perplexity "<test_query>"
 ```
 Run for each of the 10 test queries.
 

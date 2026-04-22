@@ -201,11 +201,10 @@ orth run scrapegraph /v1/smartscraper --body '{
 
 **Find competitors/similar companies:**
 ```bash
-orth run exa /findSimilar --body '{
-  "url": "https://stripe.com",
-  "numResults": 10,
-  "contents": {"text": true}
-}'
+curl -sf https://api.exa.ai/findSimilar \
+  -H "x-api-key: $EXA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://stripe.com", "numResults": 10}'
 ```
 
 ### 3e. Open-Ended Research
@@ -275,7 +274,10 @@ orth run -X POST nyne /company/funders -d '{"company_domain": "stripe.com"}'
 # Products & competitors
 orth run brand-dev /v1/brand/ai/products --body '{"domain": "stripe.com"}'
 orth run scrapegraph /v1/smartscraper --body '{"website_url": "https://stripe.com/pricing", "user_prompt": "Extract all products, pricing tiers, and features"}'
-orth run exa /findSimilar --body '{"url": "https://stripe.com", "numResults": 10}'
+curl -sf https://api.exa.ai/findSimilar \
+  -H "x-api-key: $EXA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://stripe.com", "numResults": 10}'
 
 # News
 orth run linkup /search --body '{"q": "Stripe recent news funding announcements", "depth": "deep", "outputType": "sourcedAnswer"}'

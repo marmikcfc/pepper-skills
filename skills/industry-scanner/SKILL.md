@@ -27,14 +27,12 @@ orth run search /search \
 
 **Step 2: Deep research with Perplexity**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What are the biggest trends and developments in <industry> in the last 30 days? Include notable companies, funding events, product launches, and strategic shifts."}'
+perplexity "What are the biggest trends and developments in <industry> in the last 30 days? Include notable companies, funding events, product launches, and strategic shifts."
 ```
 
 **Step 3: Exa semantic search**
 ```bash
-orth run exa /search \
-  --body '{"query": "<industry> emerging trends <current_year>", "numResults": 10, "useAutoprompt": true}'
+exa-search "<industry> emerging trends <current_year>" --limit 10
 ```
 
 **Step 4: Social signal scan**

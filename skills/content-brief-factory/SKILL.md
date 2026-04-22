@@ -27,8 +27,7 @@ orth run search /search \
 
 **Step 2: Deep competitive content research**
 ```bash
-orth run exa /search \
-  --body '{"query": "<topic> comprehensive guide", "numResults": 5}'
+exa-search "<topic> comprehensive guide" --limit 5
 ```
 
 **Step 3: Analyze top-ranking content**

@@ -27,14 +27,12 @@ orth run seo-analyzer /keywords \
 
 **Step 2: Competitor content gap analysis**
 ```bash
-orth run exa /search \
-  --body '{"query": "<topic> site:<competitor_domain>", "numResults": 10}'
+exa-search "<topic> site:<competitor_domain>" --limit 10
 ```
 
 **Step 3: Perplexity research on keyword landscape**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What keywords should a [company_type] targeting [ICP] create content for to rank in <current_year>? What high-intent, lower-competition opportunities exist in [topic_area]?"}'
+perplexity "What keywords should a [company_type] targeting [ICP] create content for to rank in <current_year>? What high-intent, lower-competition opportunities exist in [topic_area]?"
 ```
 
 **Step 4: LLM opportunity prioritization**

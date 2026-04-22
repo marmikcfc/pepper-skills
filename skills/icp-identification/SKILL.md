@@ -14,7 +14,9 @@ Research and document your Ideal Customer Profile: target industries, company si
 - "Identify our ideal customers"
 
 ## Prerequisites
-- `ORTHOGONAL_API_KEY` — for `orth run exa`, `orth run perplexity`, `orth run company-intel`
+- `EXA_API_KEY` — platform-injected (for `exa-search`)
+- `PERPLEXITY_API_KEY` — platform-injected (for `perplexity`)
+- `ORTHOGONAL_API_KEY` — for `orth run company-intel`
 - `ANTHROPIC_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
 
@@ -22,14 +24,12 @@ Research and document your Ideal Customer Profile: target industries, company si
 
 **Step 1: Research who buys in the category**
 ```bash
-orth run exa /search \
-  --body '{"query": "<product_category> ideal customer profile buyer persona B2B", "numResults": 10}'
+exa-search "<product_category> ideal customer profile buyer persona B2B" --limit 10
 ```
 
 **Step 2: Perplexity research**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "Who typically buys <product_type>? What industries, company sizes, and roles are most common buyers? What triggers the purchase decision?"}'
+perplexity "Who typically buys <product_type>? What industries, company sizes, and roles are most common buyers? What triggers the purchase decision?"
 ```
 
 **Step 3: Analyze existing customers (if available)**

@@ -27,14 +27,12 @@ orth run search /search \
 
 **Step 2: Semantic coverage research**
 ```bash
-orth run exa /search \
-  --body '{"query": "<topic> everything you need to know complete guide", "numResults": 10}'
+exa-search "<topic> everything you need to know complete guide" --limit 10
 ```
 
 **Step 3: Question and long-tail discovery**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What are all the subtopics, related questions, and aspects someone learning about <topic> would want to understand? Be comprehensive — include beginner, intermediate, and advanced angles."}'
+perplexity "What are all the subtopics, related questions, and aspects someone learning about <topic> would want to understand? Be comprehensive — include beginner, intermediate, and advanced angles."
 ```
 
 **Step 4: LLM topical map generation**

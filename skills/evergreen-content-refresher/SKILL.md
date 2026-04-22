@@ -38,16 +38,14 @@ Check for: dated statistics, outdated tool references, broken links, missing sec
 
 **Step 3: Research the current SERP**
 ```bash
-orth run exa /search \
-  --body '{"query": "<target keyword>", "numResults": 10}'
+exa-search "<target keyword>" --limit 10
 ```
 
 Identify: what new content is outranking you, what angles they cover you don't, what questions they answer.
 
 **Step 4: Pull fresh data**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "Latest statistics on <topic> in <current_year>. Include sources."}'
+perplexity "Latest statistics on <topic> in <current_year>. Include sources."
 ```
 
 **Step 5: Refresh the content**

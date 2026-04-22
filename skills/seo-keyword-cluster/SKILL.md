@@ -22,14 +22,12 @@ Build a keyword cluster that establishes topical authority — from head term to
 
 **Step 1: Seed keyword research**
 ```bash
-orth run perplexity /chat \
-  --body '{"query": "What are people searching for around [topic]? List 20+ keyword variations, questions, and related terms. Include search intent for each."}'
+perplexity "What are people searching for around [topic]? List 20+ keyword variations, questions, and related terms. Include search intent for each."
 ```
 
 **Step 2: Expand with SERP analysis**
 ```bash
-orth run exa /search \
-  --body '{"query": "[topic] guide how to best", "numResults": 20}'
+exa-search "[topic] guide how to best" --limit 20
 ```
 
 Extract: questions top-ranking pages answer, phrases in H2s/H3s, related topics they link to.

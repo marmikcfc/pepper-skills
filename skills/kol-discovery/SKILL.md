@@ -32,8 +32,7 @@ orth run linkedin-activity /search \
 
 **Step 3: Exa semantic search**
 ```bash
-orth run exa /search \
-  --body '{"query": "top <industry> influencers bloggers thought leaders", "numResults": 10}'
+exa-search "top <industry> influencers bloggers thought leaders" --limit 10
 ```
 
 **Step 4: Score and rank**
