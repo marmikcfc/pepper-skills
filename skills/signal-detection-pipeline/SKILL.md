@@ -23,7 +23,7 @@ Designed to run hourly for signal detection. Email sends are batched and held fo
 - `ORTHOGONAL_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
 - `ANTHROPIC_API_KEY`
-- Gmail connected via orth (`orth run gmail /send` must work)
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 **Sub-skills required (must be installed):**
 - `signal-scanner`
@@ -213,7 +213,19 @@ Wait for explicit user response before proceeding.
 
 #### 6d: Send approved emails
 
-For each approved email, use the `cold-email-outreach` skill to send via Gmail.
+```bash
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the send email action slug
+composio-tool search "send email" --toolkit gmail --limit 3
+```
+
+For each approved email, use composio-tool to send via Gmail:
+
+```bash
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<contact_email>", "subject": "<subject>", "body": "<body>"}'
+```
 
 After each successful send:
 ```bash
