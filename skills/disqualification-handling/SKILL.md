@@ -17,7 +17,7 @@ Handle disqualified leads with a graceful breakup email that leaves the door ope
 - `ORTHOGONAL_API_KEY`
 - `ANTHROPIC_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
-- Gmail connected via orth
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -42,8 +42,14 @@ Only proceed if user confirms.
 
 **Step 4: Send breakup email**
 ```bash
-orth run gmail /send \
-  --body '{"to": "<email>", "subject": "Re: [our thread subject]", "body": "<breakup_email>"}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the send email action slug
+composio-tool search "send email" --toolkit gmail --limit 3
+
+# Send the breakup email
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<email>", "subject": "Re: [our thread subject]", "body": "<breakup_email>"}'
 ```
 
 **Step 5: Log disposition**
