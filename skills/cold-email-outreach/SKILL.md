@@ -1,11 +1,11 @@
 ---
 name: cold-email-outreach
-description: Write and send personalized cold email outreach to a prospect or list. Combines the Haines cold email framework with orth Gmail sending. Use when asked to send cold emails, reach out to prospects, or run an outbound sequence.
+description: Write and send personalized cold email outreach to a prospect or list. Combines the Haines cold email framework with composio-tool Gmail sending. Use when asked to send cold emails, reach out to prospects, or run an outbound sequence.
 ---
 
 # Cold Email Outreach
 
-Write and send personalized cold emails using the proven Haines cold email framework, then send via Gmail through orth.
+Write and send personalized cold emails using the proven Haines cold email framework, then send via Gmail through composio-tool.
 
 ## When to Use
 - "Send cold email to [prospect]"
@@ -17,7 +17,7 @@ Write and send personalized cold emails using the proven Haines cold email frame
 - `ORTHOGONAL_API_KEY`
 - `PEPPER_EVENT_SECRET` + `PEPPER_CLOUD_URL`
 - `ANTHROPIC_API_KEY`
-- Gmail connected via orth (`orth run gmail /send` must work)
+- Gmail connected via Composio (connect at Settings → Integrations in Pepper Cloud dashboard)
 
 ## Workflow
 
@@ -64,8 +64,14 @@ Only proceed if user confirms.
 
 **Step 6: Send via Gmail**
 ```bash
-orth run gmail /send \
-  --body '{"to": "<email>", "subject": "<subject>", "body": "<approved_body>"}'
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+
+# Search for the send email action slug
+composio-tool search "send email" --toolkit gmail --limit 3
+
+# Send the email
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email": "<email>", "subject": "<subject>", "body": "<approved_body>"}'
 ```
 
 **Step 7: Log to state**
