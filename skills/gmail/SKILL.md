@@ -5,22 +5,32 @@ description: Send, read, and manage emails via Gmail. Use when asked to send an 
 
 # Gmail
 
-Send, read, and manage emails through Gmail integration. Connect to your Gmail account to send emails, check your inbox, read messages, create drafts, and more.
+Send, read, and manage emails through Gmail integration. Connect to your Gmail account via Composio to send emails, check your inbox, read messages, create drafts, and more.
 
 ## Requirements
 
-- Install the `orth` CLI
-- Connect your Gmail account at https://orthogonal.com/dashboard/integrations
-- OAuth connection must be active (HTTP 428 response means not connected)
+- Gmail connected via Composio — connect at Settings → Integrations in Pepper Cloud dashboard (via Composio)
+- OAuth connection must be active
+
+## Credentials Check
+
+```bash
+# Verify Gmail is connected before proceeding
+composio-tool apps | grep -i gmail || echo "Gmail not connected — user must connect at Settings → Integrations"
+```
 
 ## Actions
 
 ### Send Email
 
-Send an email with optional attachments and formatting.
+Search for the action slug, then send an email.
 
 ```bash
-orth run gmail /send-email --body '{
+# Search first to find exact slug
+composio-tool search "send email" --toolkit gmail --limit 3
+
+# Execute with the slug from search results
+composio-tool execute GMAIL_SEND_EMAIL '{
   "recipient_email": "user@example.com",
   "body": "Hello, this is a test email.",
   "subject": "Test Email"
@@ -32,55 +42,57 @@ orth run gmail /send-email --body '{
 - `body` (required) - Email content/message
 - `subject` - Email subject line
 - `cc` - CC recipients (comma-separated emails)
-- `bcc` - BCC recipients (comma-separated emails)  
+- `bcc` - BCC recipients (comma-separated emails)
 - `is_html` - Send as HTML format (true/false)
 - `attachment` - File attachment path
-- `extra_recipients` - Additional recipients array
-- `user_id` - Specific user ID to send as
 
 ### List Emails
 
 Retrieve emails from your inbox or specific folders.
 
 ```bash
-orth run gmail /list-emails --body '{
-  "max_results": 10,
-  "query": "is:unread"
+# Search first to find exact slug
+composio-tool search "list emails" --toolkit gmail --limit 3
+
+# Execute with the slug from search results
+composio-tool execute GMAIL_LIST_EMAILS '{
+  "query": "is:unread",
+  "max_results": 10
 }'
 ```
 
 **Parameters:**
 - `query` - Gmail search query (e.g., "is:unread", "from:user@example.com")
-- `label_ids` - Specific Gmail label IDs to search
 - `max_results` - Maximum number of emails to return
-- `verbose` - Include detailed email data (true/false)
-- `ids_only` - Return only message IDs (true/false)
-- `include_payload` - Include full message content (true/false)
-- `include_spam_trash` - Include spam and trash folders (true/false)
-- `page_token` - Token for pagination
-- `user_id` - Specific user ID to query
+- `label_ids` - Specific Gmail label IDs to search
 
 ### Get Email
 
 Retrieve a specific email by its message ID.
 
 ```bash
-orth run gmail /get-email --body '{
+# Search first to find exact slug
+composio-tool search "fetch email" --toolkit gmail --limit 3
+
+# Execute with the slug from search results
+composio-tool execute GMAIL_FETCH_EMAIL_BY_MESSAGE_ID '{
   "message_id": "MESSAGE_ID_HERE"
 }'
 ```
 
 **Parameters:**
 - `message_id` (required) - Gmail message ID to retrieve
-- `format` - Response format (full, metadata, minimal)
-- `user_id` - Specific user ID to query
 
 ### Create Draft
 
 Create a draft email for later sending.
 
 ```bash
-orth run gmail /create-draft --body '{
+# Search first to find exact slug
+composio-tool search "create draft" --toolkit gmail --limit 3
+
+# Execute with the slug from search results
+composio-tool execute GMAIL_CREATE_EMAIL_DRAFT '{
   "recipient_email": "user@example.com",
   "body": "Draft email content",
   "subject": "Draft Subject"
@@ -94,36 +106,51 @@ orth run gmail /create-draft --body '{
 - `cc` - CC recipients (comma-separated emails)
 - `bcc` - BCC recipients (comma-separated emails)
 - `is_html` - Draft as HTML format (true/false)
-- `thread_id` - Thread ID to reply within
-- `attachment` - File attachment path
-- `extra_recipients` - Additional recipients array
-- `user_id` - Specific user ID to create draft as
+
+### Search Emails
+
+Search emails using Gmail search syntax.
+
+```bash
+# Search first to find exact slug
+composio-tool search "search emails" --toolkit gmail --limit 3
+
+# Execute with the slug from search results
+composio-tool execute GMAIL_LIST_EMAILS '{
+  "query": "from:customers subject:feedback",
+  "max_results": 50
+}'
+```
 
 ## Usage Examples
 
 **Send a quick email:**
 ```bash
-orth run gmail /send-email -b '{"recipient_email":"colleague@company.com","body":"The report is ready for review.","subject":"Report Ready"}'
+composio-tool search "send email" --toolkit gmail --limit 3
+composio-tool execute GMAIL_SEND_EMAIL '{"recipient_email":"colleague@company.com","body":"The report is ready for review.","subject":"Report Ready"}'
 ```
 
 **Check unread emails:**
 ```bash
-orth run gmail /list-emails -b '{"query":"is:unread","max_results":5}'
+composio-tool search "list emails" --toolkit gmail --limit 3
+composio-tool execute GMAIL_LIST_EMAILS '{"query":"is:unread","max_results":5}'
 ```
 
 **Get a specific email:**
 ```bash
-orth run gmail /get-email -b '{"message_id":"17a1b2c3d4e5f6g7"}'
+composio-tool search "fetch email" --toolkit gmail --limit 3
+composio-tool execute GMAIL_FETCH_EMAIL_BY_MESSAGE_ID '{"message_id":"17a1b2c3d4e5f6g7"}'
 ```
 
-**Create HTML draft:**
+**Create an HTML draft:**
 ```bash
-orth run gmail /create-draft -b '{"recipient_email":"team@company.com","subject":"Weekly Update","body":"<h1>Weekly Report</h1><p>All tasks completed.</p>","is_html":true}'
+composio-tool search "create draft" --toolkit gmail --limit 3
+composio-tool execute GMAIL_CREATE_EMAIL_DRAFT '{"recipient_email":"team@company.com","subject":"Weekly Update","body":"<h1>Weekly Report</h1><p>All tasks completed.</p>","is_html":true}'
 ```
 
 ## Error Handling
 
-- **HTTP 428** - Gmail integration not connected. Visit https://orthogonal.com/dashboard/integrations to connect your account
+- **Gmail not connected** - Run `composio-tool apps | grep -i gmail` to check. Connect at Settings → Integrations in Pepper Cloud dashboard (via Composio)
 - **400 Bad Request** - Invalid email format or missing required parameters
 - **403 Forbidden** - Insufficient permissions or quota exceeded
 - **404 Not Found** - Message ID does not exist
@@ -131,8 +158,8 @@ orth run gmail /create-draft -b '{"recipient_email":"team@company.com","subject"
 
 ## Tips
 
+- Always run `composio-tool search` before `composio-tool execute` — slugs are unpredictable and may differ from examples above
 - Use Gmail search syntax in `query` parameter (is:unread, from:email, has:attachment)
 - Set `max_results` appropriately to avoid large responses
-- Use `ids_only=true` for fast email counting
 - HTML emails need `is_html=true` parameter
 - Draft emails can be edited later in Gmail interface
