@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-04-30",
+  "updated_at": "2026-05-01",
   "skills": [
     {
       "id": "ab-test-setup",
@@ -218,6 +218,58 @@
       "forked_at": "2026-04-20",
       "modified": false,
       "changes": null,
+      "data_sources": [
+        "pepper-cloud-state-api"
+      ],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "experiment-preregister",
+      "upstream": "marmikcfc/pepper-skills/skills/experiment-preregister/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/experiment-preregister/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-05-01",
+      "modified": false,
+      "changes": null,
+      "data_sources": [
+        "pepper-cloud-state-api"
+      ],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "experiment-monitor",
+      "upstream": "marmikcfc/pepper-skills/skills/experiment-monitor/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/experiment-monitor/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-05-01",
+      "modified": false,
+      "changes": null,
+      "data_sources": [
+        "pepper-cloud-state-api"
+      ],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "experiment-archive",
+      "upstream": "marmikcfc/pepper-skills/skills/experiment-archive/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/experiment-archive/SKILL.md",
+      "tier": "prompt-only",
+      "forked_at": "2026-05-01",
+      "modified": false,
+      "changes": null,
+      "data_sources": [
+        "pepper-cloud-state-api"
+      ],
+      "cost_estimate_usd": null
+    },
+    {
+      "id": "experimentation-playbook",
+      "upstream": "marmikcfc/pepper-skills/skills/experimentation-playbook/SKILL.md",
+      "upstream_url": "https://github.com/marmikcfc/pepper-skills/blob/main/skills/experimentation-playbook/SKILL.md",
+      "tier": "composite",
+      "forked_at": "2026-05-01",
+      "modified": false,
+      "changes": "End-to-end orchestrator over experiment-design, experiment-preregister, experiment-monitor, experiment-archive, strategy-review.",
       "data_sources": [
         "pepper-cloud-state-api"
       ],
